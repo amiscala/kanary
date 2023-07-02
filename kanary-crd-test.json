@@ -1,0 +1,21 @@
+{
+    "apiVersion": "k8s-kanary.io/v1alpha1",
+    "kind": "kanary",
+    "metadata": {
+        "name": "kanary-crd-instance-test01",
+        "namespace": "default"
+    },
+    "spec": {
+        "pipeline": [
+            {
+                "sourceType": "Local",
+                "uri": "",
+                "filePathAndName": "deployment.json",
+                "replacements": {
+                    "{image}": "docker.io/hashicorp/http-echo",
+                    "{args}": "[\n\"-listen=:80\",\n\"--text=\\\"echo-v2\\\"\"\n]"
+                }
+            }
+        ]
+    }
+}
